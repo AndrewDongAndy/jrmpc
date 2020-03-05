@@ -6,8 +6,8 @@ using namespace std;
 //(warpTo 10@10) 2
 // (jump 10)3
 
-const int ROWS = 10;
-const int COLS = 10;
+const int ROWS = 200;
+const int COLS = 200;
 
 mt19937 rng;
 
