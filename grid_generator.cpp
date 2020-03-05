@@ -9,6 +9,12 @@ using namespace std;
 const int ROWS = 200;
 const int COLS = 200;
 
+const string CLASS_NAME = "maxTest";
+const string NAME = "Maximum-size board";
+
+const int START_ROW = 50;
+const int START_COL = 50;
+
 mt19937 rng;
 
 string grid[ROWS][COLS];
@@ -17,7 +23,7 @@ int randint(int lo, int hi) {
   return rng() % (hi - lo + 1) + lo;
 }
 
-void addLine(int r1, int c1, int r2, int c2, int val, int tempr, int tempc) {
+void addLine(int r1, int c1, int r2, int c2, int val, int tempr = -1, int tempc = -1) {
   string nVal = to_string(val);
   if (val == 1) {
     nVal = "(death)";
@@ -38,38 +44,46 @@ void addLine(int r1, int c1, int r2, int c2, int val, int tempr, int tempc) {
 void addTrap(int r, int c, int midVal, int len, int wid) {
   for (int i = r + 1; i < r + wid; i++) {
     for (int j = c + 1; j < c + len; j++) {
-      grid[r][c] = to_string(midVal);
+      grid[i][j] = to_string(midVal);
     }
   }
   // vert
-  addLine(r, c, r+wid, c, 1, 1, 1);
+  addLine(r, c, r+ wid, c, 1, 1, 1);
   addLine(r, c + len, r + wid, c + len, 1, 1, 1);
   // hort
   addLine(r, c, r, c + len, 1, 1, 1);
   addLine(r + wid, c, r + wid, c + len, 1, 1, 1);
+}
 
+// hot areas
+void addClump() {
 
 }
 
 void printGrid() {
-  int start_row = 100;
-  int start_col = 100;
-  cout << "#(\n";
+  cout << CLASS_NAME << '\n';
+  cout << "^self new\n";
+  cout << "    name: '" << NAME << "';\n";
+  cout << "    extent: " << ROWS << " @ " << COLS << ";\n";
+  cout << "    cycleTime: 0.5s;\n";
+  cout << "    endTime: 300.0s;\n";
+  cout << "    startLocation: " << START_ROW << "@" << START_COL << ";\n";
+  cout << "    cells: #(\n";
   for (int r = 0; r < ROWS; r++) {
     cout << "#(";
     for (int c = 0; c < COLS; c++) {
       if (c > 0) {
         cout << ' ';
       }
-      if (r == start_row && c == start_col) {
-        cout << "S";
+      if (r == START_ROW && c == START_COL) {
+        cout << "0";
         continue;
       }
       cout << grid[r][c];
     }
     cout << ")\n";
   }
-  cout << ");";
+  cout << ")";
 }
 
 int main() {
@@ -94,12 +108,15 @@ int main() {
   // temp1 and temp2 will be used as coordinates for warp squares
   // 1 = death, 2 = warp, 3 = jump.
   //addLine(0, 0, 0, 5, 1, 2, 2);
+  for (int i = 6; i < 14; i++) {
+    addLine(i, 2, i, 15, 500);
+  }
 
   // add square trap:
   // first 2 parameters are (r, c) for top left of square
   // next val is the val you want on the inside
   // next 2 vals are the length and width
-  //addTrap(0, 0, 3, 3, 5);
+  addTrap(0, 0, 100, 3, 5);
   printGrid();
 
   return 0;
