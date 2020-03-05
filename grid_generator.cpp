@@ -3,8 +3,8 @@
 using namespace std;
 
 
-const int ROWS = 50;
-const int COLS = 50;
+const int ROWS = 200;
+const int COLS = 200;
 
 mt19937 rng;
 
@@ -16,11 +16,13 @@ int main() {
   ios::sync_with_stdio(0);
   cin.tie(0);
 
-  freopen("output.txt", "w", stdout);
+  freopen("/Users/huogenx/Desktop/JRMPC/output.txt", "w", stdout);
 
-  int start_row = 20;
-  int start_col = 20;
+  int start_row = 100;
+  int start_col = 100;
+  cout << "#(\n";
   for (int r = 0; r < ROWS; r++) {
+    cout << "#(";
     for (int c = 0; c < COLS; c++) {
       if (c > 0) {
         cout << ' ';
@@ -35,9 +37,9 @@ int main() {
       }
       cout << x;
     }
-    cout << '\n';
+    cout << ")\n";
   }
-
+  cout << ");";
 
   return 0;
 }
