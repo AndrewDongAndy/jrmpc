@@ -42,7 +42,6 @@ class jrmpcboard():
         else:
             for y in range(self.rows):
                 for x in range(self.cols):
-                    print(x, y)
                     self.board[y][x] = random.randint(low_range, high_range)
     def rect(self, x, y, width, height, low_range = 0, high_range = 0, death=False):
         if low_range > high_range:
@@ -66,8 +65,6 @@ class jrmpcboard():
         r_counter = 0
         layer_counter = 1
         for layer in layers:
-            if layer[1] > layer[2]:
-                raise Exception('Your lower range can\'t be higher than your high range! Layer {}'.format(layer_counter))
             for r in range(layer[0]):
                 for y in range(layer[0] * 2):
                     for x in range(layer[0] * 2):
