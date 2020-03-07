@@ -75,6 +75,7 @@ class jrmpcboard():
                         if point <= 1 and point >= -5:
                             self.board[limit(y, 0, self.rows - 1)][limit(x, 0, self.cols - 1)] = int_v_map(r + 1, 1, layer[0], layer[1], layer[2])
             r_counter += layer[0]
+            layer_counter += 1
     def place_cell(self, cell_type, x, y, args):
         cell_type = int(cell_type)
         if cell_type == 0:
