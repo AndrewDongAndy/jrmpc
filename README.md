@@ -1,2 +1,2 @@
 # jrmpc
-Code for JRMPC contest: https://teams.jrmpc.ca/
+Code for the JRMPC Smalltalk contest.
